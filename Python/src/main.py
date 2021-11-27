@@ -1,21 +1,27 @@
 from modules.automata.AutoCode import nfa
 from modules.Database.database import DB
+import threading
+import serial
 import os
-import serial.tools.list_ports
 
+dev = serial.Serial("/dev/cu.usbserial-1420", 9600)
+aux = ''
+money = 0
 db = DB()
+
+def getMoney() -> None:
+    while True:
+        print(dev.readline().decode('ascii'))
 
 def main():
     while True:
         code = input()
         os.system('clear')
-        if nfa.accepts_input(code):
+        if(nfa.accepts_input(code)):
             print(db.getPriceByID(code))
 
 
-def main2():
-    for port in serial.tools.list_ports.comports():
-        print(port)
-
 if __name__ == "__main__":
-    main2()
+    thread = threading.Thread(target=getMoney)
+    thread.start()
+    main()
