@@ -11,5 +11,4 @@ if __name__ == "__main__":
         thread.start()
         alfa.sendData()
     except KeyboardInterrupt:
-        alfa.stop()
         sys.exit(0)
