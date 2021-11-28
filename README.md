@@ -6,6 +6,7 @@ It is a closed code software focused on the user, for automatic-based vending ma
 
 - [Python](https://www.python.org/)
 - [Automata-Lib](https://pypi.org/project/automata-lib/)
+- [Pyserial](https://pypi.org/project/pyserial/)
 - [Arduino](https://www.arduino.cc/)
 - [Platformio](https://platformio.org/)
 - [Protothreads](https://platformio.org/lib/show/10792/Protothreads)
