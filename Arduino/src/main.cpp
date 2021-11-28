@@ -8,7 +8,6 @@
 #include <Servo.h>
 #include <protothreads.h>
 #include "Led.h"
-#include "Buzzer.h"
 #include "Joystick.h"
 #include "Machine.h"
 
@@ -28,9 +27,6 @@ Adafruit_SSD1306 oled(W, H, &Wire, OLED_RESET);
 Led green(3);
 Led red(2);
 
-//Buzzer
-Buzzer buzz(5);
-
 //Joystick
 Joystick joystick(A1, A2);
 
@@ -39,9 +35,9 @@ Servo servo;
 
 // Threads 
 Machine machine;
-pt pThreadMessage; 
 pt pThreadBalanceC;
-pt pThreadBalanceS;
+pt pThreadRecivedData;
+pt pThreadPrintData;
 
 void setup() {
 	//Initialize the serial conexion 
@@ -51,14 +47,14 @@ void setup() {
 	servo.attach(6, 1000, 2000);
 
 	//Initial Threads
-	machine.match(red, green, buzz, servo, joystick, oled);
-	PT_INIT(&pThreadMessage);
+	machine.inizialice(red, green, servo, joystick, oled);
 	PT_INIT(&pThreadBalanceC);
-	PT_INIT(&pThreadBalanceS);
+	PT_INIT(&pThreadRecivedData);
+	PT_INIT(&pThreadPrintData);
 }
 
 void loop() {
-	PT_SCHEDULE(machine.print_message(&pThreadMessage));
+	PT_SCHEDULE(machine.printOnOled(&pThreadPrintData));
 	PT_SCHEDULE(machine.changeBalance(&pThreadBalanceC));
-	//PT_SCHEDULE(machine.sendBalance(&pThreadBalanceS));
+	PT_SCHEDULE(machine.reciveData(&pThreadRecivedData));
 }
