@@ -16,14 +16,14 @@ ExpendeMax
 ├── Arduino
 │   ├── Makefile
 │   ├── include
-│   │   └── README
+│   │   └── package
 │   ├── lib
-│   │   └── README
+│   │   └── clases
 │   ├── platformio.ini
 │   ├── src
 │   │   └── main.cpp
 │   └── test
-│       └── README.md
+│       └── tests
 ├── LICENSE
 ├── Python
 │   ├── README.md
@@ -33,11 +33,7 @@ ExpendeMax
 │       ├── __init__.py
 │       ├── main.py
 │       └── modules
-│           ├── __init__.py
-│           ├── __pycache__
-│           │   ├── __init__.cpython-310.pyc
-│           │   └── greeting.cpython-310.pyc
-│           └── greeting.py
+│           └── module
 └── README.md
 ```
 
