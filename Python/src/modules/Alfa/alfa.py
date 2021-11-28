@@ -59,7 +59,6 @@ class Alfa(object):
 
         return str(self.__decode(arr))
 
-
     def sendData(self):
         while True:
             print("Quit: Ctrl+C")
