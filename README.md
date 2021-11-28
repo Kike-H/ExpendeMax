@@ -8,6 +8,8 @@ It is a closed code software focused on the user, for automatic-based vending ma
 - [Automata-Lib](https://pypi.org/project/automata-lib/)
 - [Arduino](https://www.arduino.cc/)
 - [Platformio](https://platformio.org/)
+- [Protothreads](https://platformio.org/lib/show/10792/Protothreads)
+
 
 ## Project structure
 
