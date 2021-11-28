@@ -13,11 +13,11 @@ class Alfa(object):
         self.__dev = serial.Serial("/dev/cu.usbserial-14210", 9600)
         self.__balance = 0
         self.__actual_price = 0
+        self.__flag = True
 
     def reciveData(self) -> None:
-        while True:
+        while self.__flag:
             self.__balance = int(self.__dev.readline().decode('ascii'))
-            print(self.__balance)
 
     def __checkPrice(self,code:str) -> bool:
         self.__actual_price = self.__db.getPriceByID(code)
@@ -30,8 +30,12 @@ class Alfa(object):
         commad = 'cls' if os.name in ('nts', 'dos') else 'clear'
         os.system(commad)
     
+    def stop(self):
+        self.__flag = False
+
     def sendData(self):
         while True:
+            print("Quit: Ctrl+C")
             message = "change is "
             key = "rejected"
             code = input()
