@@ -96,8 +96,8 @@ int Machine::reciveData(struct pt *pt) {
 			if(key == "accepted") {
 				this->_green.turnOn();
 				this->_actual_balance = 0;
-				this->_servo.write(90);
-				PT_SLEEP(pt, 600);
+				this->_servo.write(180);
+				PT_SLEEP(pt, 300);
 				this->_servo.write(0);
 			}
 			if(key == "rejected") {
