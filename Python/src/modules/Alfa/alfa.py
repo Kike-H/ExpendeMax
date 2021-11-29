@@ -3,6 +3,7 @@ from modules.MachineT.machine_t import dtm
 from modules.Database.database import DB
 from typing import Iterable
 import serial
+import sys
 import os
 
 class Alfa(object):
@@ -13,7 +14,11 @@ class Alfa(object):
         self.__nfa = nfa
         self.__dtm = dtm
         self.__db = DB()
-        self.__dev = serial.Serial("/dev/cu.usbserial-14210", 9600)
+        try:
+            self.__dev = serial.Serial("/dev/cu.usbserial-14210", 9600)
+        except Exception:
+            print("No arduino connect, please connect one")
+            sys.exit()
         self.__balance = 0
         self.__actual_price = 0
 
